@@ -6,78 +6,101 @@
     <meta name="color-scheme" content="light dark">
     <title>Deckhouse Kubernetes Platform Operations</title>
     <style>
-        body { font-family: "Ubuntu variable", "Ubuntu", -apple-system, "Segoe UI", "Roboto", "Oxygen", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif; }
-        pre { padding: 10px; border-radius: 5px; }
+        body { font-family: Arial, Helvetica, sans-serif; }
+        pre { padding: 10px; border-radius: 5px; font-family: 'Courier New', Courier, monospace; position: relative; }
+        .copy-button {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            padding: 5px 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
-    <h1>Deckhouse Kubernetes Platform Operations</h1>
+    <h1>&#128511; Deckhouse Kubernetes Platform Operations</h1>
 
-    <h2>"Bad" Pod Information</h2>
-    <pre><code>
-# kubectl get pods -A -o wide | grep -Pv '\s+([1-9]+[\d]*)\/\1\s+' | grep -v 'Completed\|Evicted'
-# d8 k get pods -A -o wide | grep -Pv '\s+([1-9]+[\d]*)\/\1\s+' | grep -v 'Completed\|Evicted'
-# To delete bad pods:
-# d8 k get pods -A --no-headers -o wide | grep -Pv '\s+([1-9]+[\d]*)\/\1\s+' | grep -v 'Completed\|Evicted' | awk '{ print "d8 k -n", $1, "delete pods", $2 }'
-    </code></pre>
+    <section>
+        <h2>"Bad" Pod Information</h2>
+        <pre><button class="copy-button" onclick="copyToClipboard('pod-info')">Copy</button><code id="pod-info">d8 k get pods -A -o wide | grep -Pv '\s+([1-9]+[\d]*)\/\1\s+' | grep -v 'Completed\|Evicted'</code></pre>
+        <p>Чтобы удалить "плохие" поды:</p>
+        <pre><button class="copy-button" onclick="copyToClipboard('delete-bad-pod')">Copy</button><code id="delete-bad-pod">d8 k get pods -A --no-headers -o wide | grep -Pv '\s+([1-9]+[\d]*)\/\1\s+' | grep -v 'Completed\|Evicted' | awk '{ print "d8 k -n", $1, "delete pods", $2 }'</code></pre>
+    </section>
 
-    <h2>DKP Queue</h2>
-    <pre><code>
-kubectl -n d8-system exec -ti svc/deckhouse-leader -c deckhouse -- deckhouse-controller queue list
-d8 system queue list
-    </code></pre>
+    <section>
+        <h2>Очередь</h2>
+        <pre><button class="copy-button" onclick="copyToClipboard('queue-modern')">Copy</button><code id="queue-modern">d8 system queue list</code></pre>
+        <p>Fallback:</p>
+        <pre><button class="copy-button" onclick="copyToClipboard('queue-fallback')">Copy</button><code id="queue-fallback">d8 k -n d8-system exec -ti svc/deckhouse-leader -c deckhouse -- deckhouse-controller queue list</code></pre>
+    </section>
 
-    <h2>Registry secret</h2>
-    <pre><code>
-kubectl -n d8-system get secrets deckhouse-registry -o json | jq '.data | map_values(@base64d)'
-    </code></pre>
+    <section>
+        <h2>Раскодированный registry secret</h2>
+        <pre><button class="copy-button" onclick="copyToClipboard('registry-secret')">Copy</button><code id="registry-secret">d8 k -n d8-system get secrets deckhouse-registry -o json | jq '.data | map_values(@base64d)'</code></pre>
+    </section>
 
-    <h2>CNI Cilium Status</h2>
-    <pre><code>
-kubectl -n d8-cni-cilium exec -ti daemonsets/agent -- cilium-health status
-    </code></pre>
+    <section>
+        <h2>CNI Cilium</h2>
+        <pre><button class="copy-button" onclick="copyToClipboard('cilium-status')">Copy</button><code id="cilium-status">d8 k -n d8-cni-cilium exec -ti daemonsets/agent -- cilium status</code></pre>
+        <pre><button class="copy-button" onclick="copyToClipboard('cilium-health-status')">Copy</button><code id="cilium-health-status">d8 k -n d8-cni-cilium exec -ti daemonsets/agent -- cilium-health status</code></pre>
+    </section>
 
-    <h2>God Mode</h2>
-    <pre><code>
-kubectl -n d8-system exec -ti svc/deckhouse-leader -c deckhouse -- kubectl ...
-k get po --as=system:sudouser
-    </code></pre>
+    <section>
+        <h2>God Mode</h2>
+        <pre><button class="copy-button" onclick="copyToClipboard('godmode-modern')">Copy</button><code id="godmode-modern">
+d8 k --as=system:sudouser</code></pre>
+        <pre><button class="copy-button" onclick="copyToClipboard('godmode-fallback')">Copy</button><code id="godmode-fallback">d8 k -n d8-system exec -ti svc/deckhouse-leader -c deckhouse -- kubectl ...</code></pre>
+    </section>
 
-    <h2>Accessing from Pod to kubernetes</h2>
-    <pre><code>
-curl --verbose --cacert /var/run/secrets/kubernetes.io/serviceaccount/ca.crt --header "Authorization: Bearer $(cat /var/run/secrets/kubernetes.io/serviceaccount/token)" https://$KUBERNETES_SERVICE_HOST:$KUBERNETES_SERVICE_PORT/api/v1/namespaces/$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace)/services/ ; echo
-    </code></pre>
+    <section>
+        <h2>Accessing from Pod to Kubernetes</h2>
+        <pre><code>curl --verbose --cacert /var/run/secrets/kubernetes.io/serviceaccount/ca.crt --header "Authorization: Bearer $(cat /var/run/secrets/kubernetes.io/serviceaccount/token)" https://$KUBERNETES_SERVICE_HOST:$KUBERNETES_SERVICE_PORT/api/v1/namespaces/$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace)/services/ ; echo</code></pre>
+    </section>
 
-    <h2>Execute Command on Node</h2>
-    <pre><code>
-function exec_node() {
+    <section>
+        <h2>Execute Command on Node</h2>
+        <pre><code>function exec_node() {
     if [ "$#" -ne 1 ]; then echo "Usage: $FUNCNAME NODE_NAME"; return 1; fi
     echo "This is an example of using a function"
-}
-    </code></pre>
+}</code></pre>
+    </section>
 
-    <h2>Show Certificates</h2>
-    <pre><code>
-function show_certs() {
+    <section>
+        <h2>Show Certificates</h2>
+        <pre><code>function show_certs() {
     if [ "$#" -ne 1 ]; then echo "Usage: $FUNCNAME DOMAIN_TLD"; return 1; fi
     echo 'HEAD /' | openssl s_client -showcerts -servername $1 -connect $1:443
-}
-    </code></pre>
+}</code></pre>
+    </section>
 
-    <h2>Certificate Commands</h2>
-    <pre><code>
-openssl x509 -in /path/to/cert -noout -text
-openssl verify -CAfile /path/to/ca.crt public.crt
-    </code></pre>
+    <section>
+        <h2>Certificate Commands</h2>
+        <pre><code>openssl x509 -in /path/to/cert -noout -text
+openssl verify -CAfile /path/to/ca.crt public.crt</code></pre>
+    </section>
 
-    <h2>Commander UUID Config Map</h2>
-    <pre><code>
-kubectl -n kube-system get cm d8-commander-uuid -o yaml
-    </code></pre>
+    <section>
+        <h2>Commander UUID Config Map</h2>
+        <pre><code>kubectl -n kube-system get cm d8-commander-uuid -o yaml</code></pre>
+    </section>
 
-    <h2>Commander - View Clusters</h2>
-    <pre><code>
-kubectl -n d8-commander exec -ti commander-postgres-0 -- psql -P expanded=off -U postgres -d commander -c "SELECT name FROM clusters;"
-    </code></pre>
+    <section>
+        <h2>Commander - View Clusters</h2>
+        <pre><code>kubectl -n d8-commander exec -ti commander-postgres-0 -- psql -P expanded=off -U postgres -d commander -c "SELECT name FROM clusters;"</code></pre>
+    </section>
+
+    <script>
+        function copyToClipboard(id) {
+            const codeElement = document.getElementById(id);
+            const textToCopy = codeElement.innerText || codeElement.textContent;
+            navigator.clipboard.writeText(textToCopy.trim())
+                .then(() => alert('Code copied to clipboard!'))
+                .catch(err => alert('Failed to copy text: ' + err));
+        }
+    </script>
 </body>
 </html>
