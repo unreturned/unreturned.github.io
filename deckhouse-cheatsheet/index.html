@@ -13,8 +13,8 @@
             top: 5px;
             right: 5px;
             padding: 5px 10px;
-            background-color: #007bff;
-            color: white;
+            background-color: #333;
+            color: #fff;
             border: none;
             border-radius: 3px;
             cursor: pointer;
@@ -53,44 +53,43 @@
         <h2>God Mode</h2>
         <pre><button class="copy-button" onclick="copyToClipboard('godmode-modern')">Copy</button><code id="godmode-modern">
 d8 k --as=system:sudouser</code></pre>
+        <p>Fallback:</p>
         <pre><button class="copy-button" onclick="copyToClipboard('godmode-fallback')">Copy</button><code id="godmode-fallback">d8 k -n d8-system exec -ti svc/deckhouse-leader -c deckhouse -- kubectl ...</code></pre>
     </section>
 
     <section>
-        <h2>Accessing from Pod to Kubernetes</h2>
-        <pre><code>curl --verbose --cacert /var/run/secrets/kubernetes.io/serviceaccount/ca.crt --header "Authorization: Bearer $(cat /var/run/secrets/kubernetes.io/serviceaccount/token)" https://$KUBERNETES_SERVICE_HOST:$KUBERNETES_SERVICE_PORT/api/v1/namespaces/$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace)/services/ ; echo</code></pre>
+        <h2>Pods</h2>
+        <p>Создать подик</p>
+        <pre><button class="copy-button" onclick="copyToClipboard('create-pod')">Copy</button><code id="create-pod">d8 k create deployment alpine --image docker.io/library/alpine:3.22 -- /bin/sh -c 'sleep infinity'</code></pre>
+        <p>Провалиться в контейнер с помощью</p>
+        <pre><button class="copy-button" onclick="copyToClipboard('exec-to-pod')">Copy</button><code id="exec-to-pod">d8 k exec -ti deployment/alpine -- /bin/sh -c 'apk add --no-cache curl; sh'</code></pre>
+        <p>И сделать запрос к API</p>
+        <pre><button class="copy-button" onclick="copyToClipboard('request-to-api')">Copy</button><code id="request-to-api">curl --verbose --cacert /var/run/secrets/kubernetes.io/serviceaccount/ca.crt --header "Authorization: Bearer $(cat /var/run/secrets/kubernetes.io/serviceaccount/token)" https://$KUBERNETES_SERVICE_HOST:$KUBERNETES_SERVICE_PORT/api/v1/namespaces/$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace)/services/ ; echo</code></pre>
     </section>
 
     <section>
-        <h2>Execute Command on Node</h2>
-        <pre><code>function exec_node() {
-    if [ "$#" -ne 1 ]; then echo "Usage: $FUNCNAME NODE_NAME"; return 1; fi
-    echo "This is an example of using a function"
+        <h2>Функция вывода информации о сертификате</h2>
+        <p>Копируем, вставляем в bash и вызываем по имени</p>
+        <pre><button class="copy-button" onclick="copyToClipboard('show-certs-function')">Copy</button><code id="show-certs-function">function show_certs() {
+    if [ "$#" -lt 1 ] || [ "$#" -gt 2 ]; then echo "Usage: $FUNCNAME DOMAIN_TLD [PORT]"; return 1; fi
+    local domain="$1"
+    local port="${2:-443}"
+    echo 'HEAD /' | openssl s_client -showcerts -servername "$domain" -connect "$domain":"$port"
 }</code></pre>
-    </section>
-
-    <section>
-        <h2>Show Certificates</h2>
-        <pre><code>function show_certs() {
-    if [ "$#" -ne 1 ]; then echo "Usage: $FUNCNAME DOMAIN_TLD"; return 1; fi
-    echo 'HEAD /' | openssl s_client -showcerts -servername $1 -connect $1:443
-}</code></pre>
-    </section>
-
-    <section>
-        <h2>Certificate Commands</h2>
-        <pre><code>openssl x509 -in /path/to/cert -noout -text
-openssl verify -CAfile /path/to/ca.crt public.crt</code></pre>
+        <p>Посмотреть информацию о сертификате</p>
+        <pre><button class="copy-button" onclick="copyToClipboard('show-cert-info')">Copy</button><code id="show-cert-info">openssl x509 -in /path/to/cert.crt -noout -text</code></pre>
+        <p>verify</p>
+        <pre><button class="copy-button" onclick="copyToClipboard('cert-verify-ca')">Copy</button><code id="cert-verify-ca">openssl verify -CAfile /path/to/ca.crt /path/to/cert.crt</code></pre>
     </section>
 
     <section>
         <h2>Commander UUID Config Map</h2>
-        <pre><code>kubectl -n kube-system get cm d8-commander-uuid -o yaml</code></pre>
+        <pre><button class="copy-button" onclick="copyToClipboard('commander-uuid')">Copy</button><code id="commander-uuid">kubectl -n kube-system get cm d8-commander-uuid -o yaml</code></pre>
     </section>
 
     <section>
         <h2>Commander - View Clusters</h2>
-        <pre><code>kubectl -n d8-commander exec -ti commander-postgres-0 -- psql -P expanded=off -U postgres -d commander -c "SELECT name FROM clusters;"</code></pre>
+        <pre><button class="copy-button" onclick="copyToClipboard('commander-clusters')">Copy</button><code id="commander-clusters">kubectl -n d8-commander exec -ti commander-postgres-0 -- psql -P expanded=off -U postgres -d commander -c "SELECT name FROM clusters;"</code></pre>
     </section>
 
     <script>
