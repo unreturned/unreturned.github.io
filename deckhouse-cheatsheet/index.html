@@ -74,7 +74,7 @@ d8 k --as=system:sudouser</code></pre>
     if [ "$#" -lt 1 ] || [ "$#" -gt 2 ]; then echo "Usage: $FUNCNAME DOMAIN_TLD [PORT]"; return 1; fi
     local domain="$1"
     local port="${2:-443}"
-    echo 'HEAD /' | openssl s_client -showcerts -servername "$domain" -connect "$domain":"$port"
+    echo | openssl s_client -showcerts -servername "$domain" -connect "$domain":"$port"
 }</code></pre>
         <p>Посмотреть информацию о сертификате</p>
         <pre><button class="copy-button" onclick="copyToClipboard('show-cert-info')">Copy</button><code id="show-cert-info">openssl x509 -in /path/to/cert.crt -noout -text</code></pre>
@@ -84,12 +84,17 @@ d8 k --as=system:sudouser</code></pre>
 
     <section>
         <h2>Commander UUID Config Map</h2>
-        <pre><button class="copy-button" onclick="copyToClipboard('commander-uuid')">Copy</button><code id="commander-uuid">kubectl -n kube-system get cm d8-commander-uuid -o yaml</code></pre>
+        <pre><button class="copy-button" onclick="copyToClipboard('commander-uuid')">Copy</button><code id="commander-uuid">d8 k -n kube-system get cm d8-commander-uuid -o yaml</code></pre>
     </section>
 
     <section>
         <h2>Commander - View Clusters</h2>
-        <pre><button class="copy-button" onclick="copyToClipboard('commander-clusters')">Copy</button><code id="commander-clusters">kubectl -n d8-commander exec -ti commander-postgres-0 -- psql -P expanded=off -U postgres -d commander -c "SELECT name FROM clusters;"</code></pre>
+        <pre><button class="copy-button" onclick="copyToClipboard('commander-clusters')">Copy</button><code id="commander-clusters">d8 k -n d8-commander exec -ti commander-postgres-0 -- psql -P expanded=off -U postgres -d commander -c "SELECT name FROM clusters;"</code></pre>
+    </section>
+
+    <section>
+        <h2>Chrony</h2>
+        <pre><button class="copy-button" onclick="copyToClipboard('chrony')">Copy</button><code id="chrony">d8 k -n d8-chrony exec -ti daemonsets/chrony-master -- chronyc sources -v</code></pre>
     </section>
 
     <script>
