@@ -1,0 +1,9 @@
+services:
+  website:
+    # https://hub.docker.com/_/nginx
+    image: docker.io/library/nginx:alpine
+    restart: always
+    ports:
+      - "3000:80"
+    volumes:
+      - ./:/usr/share/nginx/html/
