@@ -25,33 +25,47 @@
     <h1>&#128511; Deckhouse Kubernetes Platform Operations Cheatsheet</h1>
 
     <section>
-        <a id="bad-pod-information" href="#bad-pod-information"><h2>"Bad" Pod Information</h2></a>
+        <ul>
+        <li><a href="#bad-pod-information">"Bad" Pod Information</a></li>
+        <li><a href="#queue">Очередь</a></li>
+        <li><a href="#registry-secret">Раскодированный registry secret</a></li>
+        <li><a href="#cni-cilium">CNI Cilium</a></li>
+        <li><a href="#god-mode">God Mode</a></li>
+        <li><a href="#pods">Pods</a></li>
+        <li><a href="#certificates">Функция вывода информации о сертификате></a></li>
+        <li><a href="#commander">Commander</a></li>
+        <li><a href="#chrony">Chrony</a></li>
+        </ul>
+    </section>
+
+    <section>
+        <a id="bad-pod-information" href="#bad-pod-information"><h3>"Bad" Pod Information</h3></a>
         <pre><button class="copy-button" onclick="copyToClipboard('pod-info')">Copy</button><code id="pod-info">d8 k get pods -A -o wide | grep -Pv '\s+([1-9]+[\d]*)\/\1\s+' | grep -v 'Completed\|Evicted'</code></pre>
         <p>Чтобы удалить "плохие" поды:</p>
         <pre><button class="copy-button" onclick="copyToClipboard('delete-bad-pod')">Copy</button><code id="delete-bad-pod">d8 k get pods -A --no-headers -o wide | grep -Pv '\s+([1-9]+[\d]*)\/\1\s+' | grep -v 'Completed\|Evicted' | awk '{ print "d8 k -n", $1, "delete pods", $2 }'</code></pre>
     </section>
 
     <section>
-        <a id="queue" href="#queue"><h2>Очередь</h2></a>
+        <a id="queue" href="#queue"><h3>Очередь</h3></a>
         <pre><button class="copy-button" onclick="copyToClipboard('queue-modern')">Copy</button><code id="queue-modern">d8 system queue list</code></pre>
         <p>Fallback:</p>
         <pre><button class="copy-button" onclick="copyToClipboard('queue-fallback')">Copy</button><code id="queue-fallback">d8 k -n d8-system exec -ti svc/deckhouse-leader -c deckhouse -- deckhouse-controller queue list</code></pre>
     </section>
 
     <section>
-        <a id="registry-secret" href="#registry-secret"><h2>Раскодированный registry secret</h2></a>
+        <a id="registry-secret" href="#registry-secret"><h3>Раскодированный registry secret</h3></a>
         <pre><button class="copy-button" onclick="copyToClipboard('registry-secret')">Copy</button><code id="registry-secret">d8 k -n d8-system get secrets deckhouse-registry -o json | jq '.data | map_values(@base64d)'</code></pre>
     </section>
 
     <section>
-        <a id="cni-cilium" href="#cni-cilium"><h2>CNI Cilium</h2></a>
+        <a id="cni-cilium" href="#cni-cilium"><h3>CNI Cilium</h3></a>
         <pre><button class="copy-button" onclick="copyToClipboard('cilium-health-status')">Copy</button><code id="cilium-health-status">d8 k -n d8-cni-cilium exec -ti daemonsets/agent -- cilium-health status</code></pre>
         <p>Verbose:</p>
         <pre><button class="copy-button" onclick="copyToClipboard('cilium-status')">Copy</button><code id="cilium-status">d8 k -n d8-cni-cilium exec -ti daemonsets/agent -- cilium status --verbose</code></pre>
     </section>
 
     <section>
-        <a id="god-mode" href="#god-mode"><h2>God Mode</h2></a>
+        <a id="god-mode" href="#god-mode"><h3>God Mode</h3></a>
         <pre><button class="copy-button" onclick="copyToClipboard('godmode-modern')">Copy</button><code id="godmode-modern">
 d8 k --as=system:sudouser</code></pre>
         <p>Fallback:</p>
@@ -59,7 +73,7 @@ d8 k --as=system:sudouser</code></pre>
     </section>
 
     <section>
-        <a id="pods" href="#pods"><h2>Pods</h2></a>
+        <a id="pods" href="#pods"><h3>Pods</h3></a>
         <p>Создать подик</p>
         <pre><button class="copy-button" onclick="copyToClipboard('create-pod')">Copy</button><code id="create-pod">d8 k create deployment alpine --image docker.io/library/alpine:3.22 -- /bin/sh -c 'sleep infinity'</code></pre>
         <p>Провалиться в контейнер с помощью</p>
@@ -69,7 +83,7 @@ d8 k --as=system:sudouser</code></pre>
     </section>
 
     <section>
-        <a id="certificates" href="#certificates"><h2>Функция вывода информации о сертификате</h2></a>
+        <a id="certificates" href="#certificates"><h3>Функция вывода информации о сертификате</h3></a>
         <p>Копируем, вставляем в bash и вызываем по имени</p>
         <pre><button class="copy-button" onclick="copyToClipboard('show-certs-function')">Copy</button><code id="show-certs-function">function show_certs() {
     if [ "$#" -lt 1 ] || [ "$#" -gt 2 ]; then echo "Usage: $FUNCNAME DOMAIN_TLD [PORT]"; return 1; fi
@@ -84,7 +98,7 @@ d8 k --as=system:sudouser</code></pre>
     </section>
 
     <section>
-        <a id="commander" href="#commander"><h2>Commander</h2></a>
+        <a id="commander" href="#commander"><h3>Commander</h3></a>
         <p>Commander UUID Config Map</p>
         <pre><button class="copy-button" onclick="copyToClipboard('commander-uuid')">Copy</button><code id="commander-uuid">d8 k -n kube-system get cm d8-commander-uuid -o yaml</code></pre>
         <p>Commander DB - View Clusters</p>
@@ -92,7 +106,7 @@ d8 k --as=system:sudouser</code></pre>
     </section>
 
     <section>
-        <a id="chrony" href="#chrony"><h2>Chrony</h2></a>
+        <a id="chrony" href="#chrony"><h3>Chrony</h3></a>
         <pre><button class="copy-button" onclick="copyToClipboard('chrony')">Copy</button><code id="chrony">d8 k -n d8-chrony exec -ti daemonsets/chrony-master -- chronyc sources -v</code></pre>
     </section>
 
