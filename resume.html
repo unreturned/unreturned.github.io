@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light dark">
+    <title>Резюме - Ковальков Дмитрий Андреевич</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        h1 {
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            border-bottom: 3px solid #2dacb1;
+            padding-bottom: 10px;
+        }
+
+        h1 + p {
+            font-size: 1.3em;
+            color: #2dacb1;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: #2c3e50;
+            font-size: 1.8em;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #ecf0f1;
+            padding-bottom: 8px;
+        }
+
+        h3 {
+            color: #34495e;
+            font-size: 1.3em;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        h4 {
+            color: #34495e;
+            font-size: 1.1em;
+            margin-top: 15px;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #ecf0f1;
+            margin: 25px 0;
+        }
+
+        .contact-info {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+
+        .contact-info ul {
+            list-style: none;
+        }
+
+        .contact-info li {
+            padding: 5px 0;
+            font-size: 0.95em;
+        }
+
+        .contact-info strong {
+            display: inline-block;
+            width: 130px;
+            color: #2c3e50;
+        }
+
+        .about {
+            background: #e8f6f7;
+            padding: 20px;
+            border-radius: 5px;
+            border-left: 4px solid #2dacb1;
+            margin: 20px 0;
+        }
+
+        .about p {
+            margin-bottom: 10px;
+        }
+
+        .about pre {
+            background: #2c3e50;
+            color: #2ecc71;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin-top: 10px;
+            font-size: 0.9em;
+        }
+
+        .about code {
+            font-family: 'Courier New', monospace;
+        }
+
+        .job {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 5px;
+            border-left: 4px solid #2dacb1;
+        }
+
+        .job-header {
+            margin-bottom: 15px;
+        }
+
+        .job-title {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .job-period {
+            color: #7f8c8d;
+            font-style: italic;
+            font-size: 0.9em;
+        }
+
+        .job-location {
+            color: #7f8c8d;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+
+        .job-description {
+            margin-top: 10px;
+        }
+
+        ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        a {
+            color: #2dacb1;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: #1d3da5;
+            text-decoration: underline;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 15px;
+        }
+
+        .skill-category {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 3px solid #2dacb1;
+        }
+
+        .skill-category h4 {
+            color: #2dacb1;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .skill-category ul {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .skill-category li {
+            padding: 3px 0;
+            font-size: 0.9em;
+        }
+
+        .skill-category li:before {
+            content: "▸ ";
+            color: #2dacb1;
+            font-weight: bold;
+        }
+
+        .education {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 15px 0;
+        }
+
+        .qualities {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .quality-tag {
+            background: #2dacb1;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+        }
+
+        .languages {
+            display: flex;
+            gap: 30px;
+            margin-top: 15px;
+        }
+
+        .language {
+            background: #f8f9fa;
+            padding: 15px 25px;
+            border-radius: 5px;
+            flex: 1;
+        }
+
+        .language strong {
+            color: #2c3e50;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #ecf0f1;
+            color: #7f8c8d;
+            font-style: italic;
+            font-size: 0.9em;
+        }
+
+        .position-info {
+            background: #fff3cd;
+            padding: 20px;
+            border-radius: 5px;
+            border-left: 4px solid #ffc107;
+            margin: 20px 0;
+        }
+
+        .position-info ul {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .position-info li {
+            padding: 5px 0;
+        }
+
+        .position-info strong {
+            color: #2c3e50;
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .languages {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .contact-info strong {
+                width: 100%;
+                display: block;
+            }
+        }
+
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-color: #1a1a1a;
+                color: #e0e0e0;
+            }
+
+            .container {
+                background: #2d2d2d;
+                color: #e0e0e0;
+            }
+
+            h1, h2, h3, h4, .job-title, .contact-info strong, .language strong {
+                color: #e0e0e0;
+            }
+
+            .contact-info, .job, .education, .skill-category, .language {
+                background: #3a3a3a;
+            }
+
+            .about {
+                background: #2a4a4c;
+                border-left-color: #2dacb1;
+            }
+
+            .position-info {
+                background: #3a3320;
+                border-left-color: #ffc107;
+            }
+
+            h2 {
+                border-bottom-color: #4a4a4a;
+            }
+
+            hr, .footer {
+                border-top-color: #4a4a4a;
+                color: #999;
+            }
+
+            .job-period, .job-location {
+                color: #999;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Ковальков Дмитрий Андреевич</h1>
+        <p><strong>Архитектор инфраструктурных решений</strong></p>
+
+        <hr>
+
+        <h2>👤 Контактная информация</h2>
+        <div class="contact-info">
+            <ul>
+                <li><strong>Возраст:</strong> 36 лет (05.06.1989)</li>
+                <li><strong>Телефон:</strong> +7 (911) 148-80-99</li>
+                <li><strong>Email:</strong> <a href="mailto:kovalkov.dmitriy@gmail.com">kovalkov.dmitriy@gmail.com</a> <em>(предпочитаемый способ связи)</em></li>
+                <li><strong>Локация:</strong> Санкт-Петербург, м. Гражданский проспект</li>
+                <li><strong>Гражданство:</strong> Россия</li>
+                <li><strong>Готовность:</strong> не готов к переезду, готов к командировкам</li>
+            </ul>
+        </div>
+
+        <h2>💼 О себе</h2>
+        <div class="about">
+            <p>Опытный архитектор инфраструктурных решений с <strong>12-летней экспертизой</strong> в проектировании и внедрении высоконагруженных отказоустойчивых систем.</p>
+            
+            <p><strong>Специализация:</strong> Kubernetes (Deckhouse Platform), облачные решения (AWS, Yandex Cloud), автоматизация (Terraform, Ansible, Python), соответствие стандартам PCI DSS.</p>
+            
+            <p>Практический опыт полного цикла работы с продуктом — от пилотов до внедрения и оптимизации инфраструктуры. Нацелен на создание масштабируемых и безопасных решений для бизнес-успеха.</p>
+
+            <pre><code>curl --silent https://curl.se/docs/thanks.html | grep -E 'Kovalkov.*Dmitrii'</code></pre>
+        </div>
+
+        <h2>💰 Желаемая позиция</h2>
+        <div class="position-info">
+            <ul>
+                <li><strong>Должность:</strong> Архитектор инфраструктурных решений</li>
+                <li><strong>Специализации:</strong> DevOps-инженер, Продуктовый аналитик, Системный администратор</li>
+                <li><strong>Занятость:</strong> полная занятость, частичная занятость, проектная работа</li>
+                <li><strong>График работы:</strong> полный день</li>
+                <li><strong>Зарплата:</strong> 700 000 ₽ на руки</li>
+                <li><strong>Время в пути:</strong> не более часа</li>
+            </ul>
+        </div>
+
+        <h2>🚀 Опыт работы</h2>
+
+        <div class="job">
+            <div class="job-header">
+                <h3>Флант</h3>
+                <div class="job-title">Архитектор инфраструктурных решений</div>
+                <div class="job-period">Ноябрь 2024 — настоящее время (1 год)</div>
+                <div class="job-location">📍 Москва | 🌐 <a href="https://flant.ru/" target="_blank">flant.ru</a></div>
+            </div>
+            <div class="job-description">
+                <p><strong>Обязанности:</strong></p>
+                <ul>
+                    <li>Работа с клиентами по внедрению продуктов <a href="https://deckhouse.ru/" target="_blank">Deckhouse</a> в ландшафт заказчика</li>
+                    <li>Проведение пилотов Deckhouse Kubernetes Platform</li>
+                    <li>Сбор требований, взаимодействие с отделами разработки по улучшению продукта</li>
+                </ul>
+                <p><em>О компании:</em> Системная интеграция, автоматизация технологических и бизнес-процессов предприятия, ИТ-консалтинг</p>
+            </div>
+        </div>
+
+        <div class="job">
+            <div class="job-header">
+                <h3>Флант</h3>
+                <div class="job-title">Инженер развёртывания и эксплуатации</div>
+                <div class="job-period">Ноябрь 2023 — Ноябрь 2024 (1 год 1 месяц)</div>
+                <div class="job-location">📍 Москва | 🌐 <a href="https://flant.ru/" target="_blank">flant.ru</a></div>
+            </div>
+            <div class="job-description">
+                <p><strong>Обязанности:</strong></p>
+                <ul>
+                    <li>Развёртывание и эксплуатация платформы Deckhouse Kubernetes Platform</li>
+                    <li>Разработка и обслуживание серверной части приложения</li>
+                    <li>Написание программного кода</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="job">
+            <div class="job-header">
+                <h3>ООО "АйТи" (Ecwid)</h3>
+                <div class="job-title">Ведущий системный администратор</div>
+                <div class="job-period">Март 2022 — Март 2023 (1 год 1 месяц)</div>
+                <div class="job-location">📍 Россия | 🌐 <a href="http://www.ecwid.com/" target="_blank">ecwid.com</a></div>
+            </div>
+            <div class="job-description">
+                <p><strong>Ключевые достижения:</strong></p>
+                <ul>
+                    <li>Поддержка инфраструктуры на базе облачного провайдера <strong>AWS</strong> (EC2-инстансы, managed базы данных, Kubernetes)</li>
+                    <li>Написание скриптов автоматизации (Python, Bash)</li>
+                    <li>Использование <strong>Chef</strong>, <strong>Ansible</strong></li>
+                    <li>Описание инфраструктуры через <strong>Terraform</strong></li>
+                    <li>Поддержка CI/CD <strong>TeamCity</strong></li>
+                    <li>Выполнение регулярных работ согласно регламентам <strong>PCI DSS</strong></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="job">
+            <div class="job-header">
+                <h3>ООО "Виртуальный Форт"</h3>
+                <div class="job-title">Системный инженер</div>
+                <div class="job-period">Октябрь 2020 — Февраль 2022 (1 год 5 месяцев)</div>
+                <div class="job-location">📍 Санкт-Петербург | 🌐 <a href="https://virtualfort.ru/" target="_blank">virtualfort.ru</a></div>
+            </div>
+            <div class="job-description">
+                <p><strong>Ключевые достижения:</strong></p>
+                <ul>
+                    <li>Эксплуатация гетерогенной инфраструктуры (VM на ОС Linux/Windows, гипервизоры VMWare, сетевая инфраструктура), соответствующей стандарту <a href="https://www.pcisecuritystandards.org/" target="_blank">PCI DSS</a></li>
+                    <li>Работа по методологии <strong>ITSM</strong></li>
+                    <li>Приём и регистрация заявок клиентов, подготовка бюллетеней на изменения в инфраструктуре</li>
+                    <li>Эксплуатация системы логов на базе стека <strong>ELK</strong>, мониторинг <strong>Zabbix</strong>/<strong>VictoriaMetrics</strong></li>
+                    <li>Подготовка базовой инфраструктуры: Nginx, Apache2, IIS, MySQL, PostgreSQL, MS SQL, PHP, NodeJS</li>
+                    <li>Используемая система автоматизации: <strong>SaltStack</strong></li>
+                    <li>Проактивный мониторинг и оптимизация инфраструктуры</li>
+                    <li>Выполнение периодических работ по обновлению ПО, закрытию уязвимостей согласно стандарту PCI DSS</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="job">
+            <div class="job-header">
+                <h3>ФастВПС Лимитед, ООО</h3>
+                <div class="job-title">Руководитель службы технической поддержки</div>
+                <div class="job-period">Октябрь 2015 — Август 2020 (4 года 11 месяцев)</div>
+                <div class="job-location">📍 Санкт-Петербург | 🌐 <a href="https://fastvps.ru" target="_blank">fastvps.ru</a></div>
+            </div>
+            <div class="job-description">
+                <p><strong>Ключевые достижения:</strong></p>
+                <ul>
+                    <li>Оказание технической поддержки клиентам по услугам компании</li>
+                    <li>Написание регламентов для отдела</li>
+                    <li>Набор и обучение сотрудников в отдел</li>
+                    <li>Участие в разработке проектов компании (биллинг-системы, панель <a href="https://fastpanel.direct/" target="_blank">FASTPANEL</a>) в качестве тестировщика и постановщика задач</li>
+                    <li>Внешние коммуникации с клиентами, обработка жалоб и обращений</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="job">
+            <div class="job-header">
+                <h3>ФастВПС Лимитед, ООО</h3>
+                <div class="job-title">Инженер службы технической поддержки</div>
+                <div class="job-period">Декабрь 2012 — Октябрь 2015 (2 года 11 месяцев)</div>
+                <div class="job-location">📍 Санкт-Петербург | 🌐 <a href="https://fastvps.ru" target="_blank">fastvps.ru</a></div>
+            </div>
+            <div class="job-description">
+                <p><strong>Обязанности:</strong></p>
+                <ul>
+                    <li>Оказание технической поддержки клиентам</li>
+                    <li>Помощь клиентам по работе с выделенными физическими серверами и VPS на базе OpenVZ и KVM</li>
+                    <li>Обслуживание панелей управления ISPManager и FASTPANEL</li>
+                    <li>Настройка Apache2, Nginx, MySQL, PHP для работы сайтов клиентов</li>
+                    <li>Диагностика работы серверов и выявление проблем</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>🎓 Образование</h2>
+        <div class="education">
+            <h3>Дальневосточный федеральный университет</h3>
+            <p><em>Владивосток, 2011</em></p>
+            <ul>
+                <li><strong>Факультет:</strong> ФРЭТ</li>
+                <li><strong>Специальность:</strong> Информационные системы и технологии</li>
+                <li><strong>Квалификация:</strong> Инженер</li>
+            </ul>
+        </div>
+
+        <h2>🛠️ Технические навыки</h2>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h4>Контейнеризация и оркестрация</h4>
+                <ul>
+                    <li>Kubernetes (Deckhouse Platform)</li>
+                    <li>Docker</li>
+                </ul>
+            </div>
+
+            <div class="skill-category">
+                <h4>Облачные платформы</h4>
+                <ul>
+                    <li>AWS (EC2, RDS, EKS)</li>
+                    <li>Yandex Cloud</li>
+                </ul>
+            </div>
+
+            <div class="skill-category">
+                <h4>Автоматизация и IaC</h4>
+                <ul>
+                    <li>Terraform</li>
+                    <li>Ansible</li>
+                    <li>Chef</li>
+                    <li>SaltStack</li>
+                </ul>
+            </div>
+
+            <div class="skill-category">
+                <h4>Языки программирования</h4>
+                <ul>
+                    <li>Python</li>
+                    <li>Bash</li>
+                    <li>PHP</li>
+                </ul>
+            </div>
+
+            <div class="skill-category">
+                <h4>Базы данных</h4>
+                <ul>
+                    <li>PostgreSQL</li>
+                    <li>MySQL</li>
+                    <li>MS SQL</li>
+                </ul>
+            </div>
+
+            <div class="skill-category">
+                <h4>Веб-серверы</h4>
+                <ul>
+                    <li>Nginx</li>
+                    <li>Apache2</li>
+                    <li>IIS</li>
+                </ul>
+            </div>
+
+            <div class="skill-category">
+                <h4>Мониторинг и логирование</h4>
+                <ul>
+                    <li>Zabbix</li>
+                    <li>VictoriaMetrics</li>
+                    <li>ELK Stack</li>
+                </ul>
+            </div>
+
+            <div class="skill-category">
+                <h4>CI/CD</h4>
+                <ul>
+                    <li>TeamCity</li>
+                    <li>Git</li>
+                </ul>
+            </div>
+
+            <div class="skill-category">
+                <h4>Сетевые технологии</h4>
+                <ul>
+                    <li>TCP/IP</li>
+                    <li>Администрирование Linux</li>
+                </ul>
+            </div>
+
+            <div class="skill-category">
+                <h4>Методологии и стандарты</h4>
+                <ul>
+                    <li>ITSM</li>
+                    <li>PCI DSS</li>
+                    <li>API разработка</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>💪 Личные качества</h2>
+        <div class="qualities">
+            <span class="quality-tag">Обучаемость</span>
+            <span class="quality-tag">Работа в команде</span>
+            <span class="quality-tag">Ведение переговоров</span>
+            <span class="quality-tag">Аналитическое мышление</span>
+            <span class="quality-tag">Проактивность</span>
+        </div>
+
+        <h2>🌐 Языки</h2>
+        <div class="languages">
+            <div class="language">
+                <strong>Русский</strong>
+                родной
+            </div>
+            <div class="language">
+                <strong>Английский</strong>
+                B1 (средний)
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>Резюме обновлено: 31 октября 2025</p>
+        </div>
+    </div>
+</body>
+</html>
+
