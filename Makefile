@@ -28,4 +28,3 @@ install-git: ## Установить Git pre-commit hooks
 		echo "$(YELLOW)⚠️  Файл scripts/install-hooks.sh не найден!$(NC)"; \
 		exit 1; \
 	fi
-
