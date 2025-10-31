@@ -12,6 +12,10 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
             line-height: 1.6;
@@ -27,6 +31,58 @@
             padding: 40px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             border-radius: 8px;
+        }
+
+        .toc {
+            background: linear-gradient(135deg, #f0f8ff 0%, #e6f3f7 100%);
+            padding: 20px 25px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 5px solid #2dacb1;
+            box-shadow: 0 2px 8px rgba(45, 172, 177, 0.1);
+        }
+
+        .toc h2 {
+            font-size: 1.3em;
+            margin-top: 0;
+            margin-bottom: 15px;
+            border-bottom: none;
+            color: #1a3a52;
+        }
+
+        .toc ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 8px;
+        }
+
+        .toc li {
+            margin: 0;
+        }
+
+        .toc a {
+            color: #2c3e50;
+            text-decoration: none;
+            display: block;
+            padding: 8px 12px;
+            border-radius: 5px;
+            transition: all 0.2s;
+            font-size: 0.95em;
+        }
+
+        .toc a:hover {
+            background: rgba(45, 172, 177, 0.1);
+            color: #2dacb1;
+            transform: translateX(5px);
+        }
+
+        .toc a:before {
+            content: "→ ";
+            color: #2dacb1;
+            font-weight: bold;
         }
 
         h1 {
@@ -378,6 +434,20 @@
                 border-left-color: #2dacb1;
             }
 
+            .toc {
+                background: linear-gradient(135deg, #243442 0%, #1e2936 100%);
+                border-left-color: #2dacb1;
+            }
+
+            .toc a {
+                color: #e8ecf0;
+            }
+
+            .toc a:hover {
+                background: rgba(45, 172, 177, 0.2);
+                color: #5fd4d9;
+            }
+
             .job {
                 background: linear-gradient(135deg, #243442 0%, #1e2936 100%);
                 border-left-color: #2dacb1;
@@ -449,22 +519,37 @@
         <h1>Ковальков Дмитрий Андреевич</h1>
         <p><strong>Архитектор инфраструктурных решений</strong></p>
 
-        <hr>
-
-        <h2>👤 Контактная информация</h2>
-        <div class="contact-info">
+        <div class="toc">
+            <h2>📑 Содержание</h2>
             <ul>
-                <li><strong>Возраст:</strong> 36 лет (05.06.1989)</li>
-                <li><strong>Телефон:</strong> +7 (911) 148-80-99</li>
-                <li><strong>Email:</strong> <a href="mailto:kovalkov.dmitriy@gmail.com">kovalkov.dmitriy@gmail.com</a> <em>(предпочитаемый способ связи)</em></li>
-                <li><strong>Локация:</strong> Санкт-Петербург, м. Гражданский проспект</li>
-                <li><strong>Гражданство:</strong> Россия</li>
-                <li><strong>Готовность:</strong> не готов к переезду, готов к командировкам</li>
+                <li><a href="#contacts">Контактная информация</a></li>
+                <li><a href="#about">О себе</a></li>
+                <li><a href="#experience">Опыт работы</a></li>
+                <li><a href="#education">Образование</a></li>
+                <li><a href="#skills">Технические навыки</a></li>
+                <li><a href="#qualities">Личные качества</a></li>
+                <li><a href="#languages">Языки</a></li>
+                <li><a href="#position">Желаемая позиция</a></li>
             </ul>
         </div>
 
-        <h2>💼 О себе</h2>
+        <hr>
+
+        <h2 id="contacts">👤 Контактная информация</h2>
+        <div class="contact-info">
+            <ul>
+                <li><strong>Телефон:</strong> +7 (911) 148-80-99</li>
+                <li><strong>Email:</strong> <a href="mailto:kovalkov.dmitriy@gmail.com">kovalkov.dmitriy@gmail.com</a> <em>(предпочитаемый способ связи)</em></li>
+                <li><strong>GitHub:</strong> <a href="https://github.com/unreturned" target="_blank">github.com/unreturned</a></li>
+                <li><strong>Локация:</strong> Санкт-Петербург</li>
+            </ul>
+        </div>
+
+        <h2 id="about">💼 О себе</h2>
         <div class="about">
+            <p><strong>Дата рождения:</strong> 05 июня 1989 года (36 лет)<br>
+            <strong>Гражданство:</strong> Российская Федерация</p>
+
             <p>Опытный архитектор инфраструктурных решений с <strong>12-летней экспертизой</strong> в проектировании и внедрении высоконагруженных отказоустойчивых систем.</p>
 
             <p><strong>Специализация:</strong> Kubernetes (Deckhouse Platform), облачные решения (AWS, Yandex Cloud), автоматизация (Terraform, Ansible, Python), соответствие стандартам PCI DSS.</p>
@@ -474,7 +559,7 @@
             <pre><code>curl --silent https://curl.se/docs/thanks.html | grep -E 'Kovalkov.*Dmitrii'</code></pre>
         </div>
 
-        <h2>🚀 Опыт работы</h2>
+        <h2 id="experience">🚀 Опыт работы</h2>
 
         <div class="job">
             <div class="job-header">
@@ -591,7 +676,7 @@
             </div>
         </div>
 
-        <h2>🎓 Образование</h2>
+        <h2 id="education">🎓 Образование</h2>
         <div class="education">
             <h3>Дальневосточный федеральный университет</h3>
             <p><em>Владивосток, 2011</em></p>
@@ -602,7 +687,7 @@
             </ul>
         </div>
 
-        <h2>🛠️ Технические навыки</h2>
+        <h2 id="skills">🛠️ Технические навыки</h2>
         <div class="skills-grid">
             <div class="skill-category">
                 <h4>Контейнеризация и оркестрация</h4>
@@ -692,7 +777,7 @@
             </div>
         </div>
 
-        <h2>💪 Личные качества</h2>
+        <h2 id="qualities">💪 Личные качества</h2>
         <div class="qualities">
             <span class="quality-tag">Обучаемость</span>
             <span class="quality-tag">Работа в команде</span>
@@ -701,7 +786,7 @@
             <span class="quality-tag">Проактивность</span>
         </div>
 
-        <h2>🌐 Языки</h2>
+        <h2 id="languages">🌐 Языки</h2>
         <div class="languages">
             <div class="language">
                 <strong>Русский</strong>
@@ -713,7 +798,7 @@
             </div>
         </div>
 
-        <h2>💰 Желаемая позиция</h2>
+        <h2 id="position">💰 Желаемая позиция</h2>
         <div class="position-info">
             <ul>
                 <li><strong>Должность:</strong> Архитектор инфраструктурных решений</li>
@@ -722,6 +807,7 @@
                 <li><strong>График работы:</strong> полный день</li>
                 <li><strong>Зарплата:</strong> 700 000 ₽ на руки</li>
                 <li><strong>Время в пути:</strong> не более часа</li>
+                <li><strong>Готовность:</strong> не готов к переезду, готов к командировкам</li>
             </ul>
         </div>
 
