@@ -33,7 +33,7 @@ NC='\033[0m' # No Color
 echo "🔍 Проверка качества кода..."
 
 # Получаем список staged файлов (исключая удалённые)
-FILES=$(git diff --cached --name-only --diff-filter=ACM | grep -E '\.(tf|yaml|yml|sh|md|txt|Makefile)$' || true)
+FILES=$(git diff --cached --name-only --diff-filter=ACM | grep -E '\.(html|css|js|json|tf|yaml|yml|sh|md|txt|py|Makefile)$' || true)
 
 if [ -z "$FILES" ]; then
     echo -e "${GREEN}✓ Нет файлов для проверки${NC}"
