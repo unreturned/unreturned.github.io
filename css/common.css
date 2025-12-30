@@ -1,0 +1,113 @@
+/* Общие стили для всех страниц сайта */
+
+:root {
+    color-scheme: light dark;
+    --bg-light: #f9f9fb;
+    --bg-dark: #1c1c1e;
+    --text-light: #1e1e1e;
+    --text-dark: #e5e5e7;
+    --accent-light: #0077cc;
+    --accent-dark: #4da3ff;
+    --button-bg-light: #e0e0e5;
+    --button-bg-dark: #555;
+    --button-text-light: #1c1c1e;
+    --button-text-dark: #fff;
+    --button-hover-light: #d0d0d5;
+    --button-hover-dark: #777;
+    --accent-color: #2dacb1;
+    --accent-hover: #1d3da5;
+}
+
+/* Базовые стили */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    background-color: light-dark(var(--bg-light), var(--bg-dark));
+    color: light-dark(var(--text-light), var(--text-dark));
+    line-height: 1.6;
+}
+
+/* Общие стили для кнопок */
+a.button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: var(--accent-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+a.button:hover {
+    background-color: var(--accent-hover);
+}
+
+/* Стили для изображений */
+.rounded-image {
+    border-radius: 30px;
+}
+
+.circle-image {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+}
+
+.responsive-image {
+    max-width: 100%;
+    max-height: 100vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Общие стили для фиксированных кнопок навигации */
+.view-button,
+.github-view-button,
+.dickpick-view-button,
+.asspick-view-button,
+.dotabuff-view-button {
+    position: fixed;
+    padding: 10px 15px;
+    text-decoration: none;
+    z-index: 1001;
+    background-color: light-dark(var(--button-bg-light), var(--button-bg-dark));
+    color: light-dark(var(--button-text-light), var(--button-text-dark));
+    border: 1px solid light-dark(#ccc, #444);
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.view-button:hover,
+.github-view-button:hover,
+.dickpick-view-button:hover,
+.asspick-view-button:hover,
+.dotabuff-view-button:hover {
+    background-color: light-dark(var(--button-hover-light), var(--button-hover-dark));
+    border-color: light-dark(#bbb, #666);
+}
+
+.github-view-button {
+    top: 10px;
+    right: 10px;
+}
+
+.dickpick-view-button {
+    bottom: 10px;
+    right: 10px;
+}
+
+.asspick-view-button {
+    top: 10px;
+    left: 10px;
+}
+
+.dotabuff-view-button {
+    bottom: 10px;
+    left: 10px;
+}
+

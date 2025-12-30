@@ -15,3 +15,9 @@ optipng -strip all qr1 *.png
 ```bash
 qrencode
 ```
+
+## Convert from png to jpeg
+
+```bash
+magick input.png -background white -flatten -quality 80 output.jpg
+```
