@@ -1,30 +1,29 @@
-# Цветовые коды для вывода
-BLUE := \033[0;34m
-GREEN := \033[0;32m
-YELLOW := \033[1;33m
-NC := \033[0m
+PWD = $(shell pwd)
 
-.PHONY: start stop install-git help
+default: help
 
-help: ## Показать список доступных команд
-	@echo "$(BLUE)Доступные команды:$(NC)"
-	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "  $(GREEN)%-15s$(NC) %s\n", $$1, $$2}'
+help:
+	@echo "  make start         start local server on http://localhost:3000"
+	@echo "  make stop          stop local server"
+	@echo "  make resume        validate resume.json"
+	@echo "  make install-git   install git pre-commit hooks"
+	@echo "  make test          open index.html locally"
 
-start: ## Запустить локальный сервер на http://localhost:3000
-	docker-compose up -d
-	@echo "$(GREEN)✓ Сервер запущен на http://localhost:3000/$(NC)"
+start:
+	docker compose up -d
 
-stop: ## Остановить локальный сервер
-	docker-compose down
-	@echo "$(GREEN)✓ Сервер остановлен$(NC)"
+stop:
+	docker compose down
 
-install-git: ## Установить Git pre-commit hooks
-	@echo "$(BLUE)Установка Git hooks...$(NC)"
-	@if [ -f scripts/install-hooks.sh ]; then \
-		chmod +x scripts/install-hooks.sh; \
-		./scripts/install-hooks.sh; \
-		echo "$(GREEN)✓ Git hooks установлены!$(NC)"; \
-	else \
-		echo "$(YELLOW)⚠️  Файл scripts/install-hooks.sh не найден!$(NC)"; \
-		exit 1; \
-	fi
+resume:
+	python3 -m json.tool resume.json > /dev/null
+	test -f js/resume.js
+	test -f css/resume.css
+
+install-git:
+	test -f scripts/install-hooks.sh
+	chmod +x scripts/install-hooks.sh
+	./scripts/install-hooks.sh
+
+test:
+	open file://$(PWD)/index.html

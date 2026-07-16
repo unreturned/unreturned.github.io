@@ -1,0 +1,270 @@
+{
+  "meta": {
+    "lang": "en"
+  },
+  "basics": {
+    "name": "Dmitrii Andreevich Kovalkov",
+    "label": "Infrastructure Solutions Architect",
+    "birthDate": "1989-06-05",
+    "citizenship": "Russian Federation",
+    "summary": "Experienced infrastructure solutions architect with **{{experienceYears}} years of expertise** in designing and delivering high-load, fault-tolerant systems.",
+    "specialization": "Kubernetes (Deckhouse Platform), cloud platforms (AWS, Yandex Cloud), automation (Terraform, Ansible, Python), PCI DSS compliance.",
+    "highlights": [
+      "Hands-on experience across the full product lifecycle — from pilots to rollout and infrastructure optimization. Focused on building scalable, secure solutions that drive business outcomes."
+    ],
+    "easterEgg": "curl --silent https://curl.se/docs/thanks.html | grep -E 'Kovalkov.*Dmitrii'"
+  },
+  "contact": {
+    "phone": "+7 (911) 148-80-99",
+    "email": {
+      "address": "kovalkov.dmitriy@gmail.com",
+      "preferred": true
+    },
+    "github": "https://github.com/unreturned",
+    "location": "Saint Petersburg"
+  },
+  "work": [
+    {
+      "company": "Flant",
+      "position": "Infrastructure Solutions Architect",
+      "startDate": "2024-11",
+      "endDate": null,
+      "location": "Moscow",
+      "website": "https://flant.ru/",
+      "sectionTitle": "Responsibilities",
+      "highlights": [
+        {
+          "text": "Working with customers to adopt Deckhouse products into their IT landscape",
+          "links": [
+            {
+              "url": "https://deckhouse.ru/",
+              "label": "Deckhouse"
+            }
+          ]
+        },
+        "Running Deckhouse Kubernetes Platform pilot projects",
+        "Gathering requirements and collaborating with engineering teams on product improvements"
+      ],
+      "companyDescription": "Systems integration, enterprise process automation, and IT consulting"
+    },
+    {
+      "company": "Flant",
+      "position": "Deployment and Operations Engineer",
+      "startDate": "2023-11",
+      "endDate": "2024-11",
+      "location": "Moscow",
+      "website": "https://flant.ru/",
+      "sectionTitle": "Responsibilities",
+      "highlights": [
+        "Deploying and operating the Deckhouse Kubernetes Platform",
+        "Developing and maintaining application backend services",
+        "Writing production software"
+      ]
+    },
+    {
+      "company": "IT LLC (Ecwid)",
+      "position": "Lead System Administrator",
+      "startDate": "2022-03",
+      "endDate": "2023-03",
+      "location": "Russia",
+      "website": "http://www.ecwid.com/",
+      "sectionTitle": "Key achievements",
+      "highlights": [
+        "Supporting AWS-based infrastructure (EC2 instances, managed databases, Kubernetes)",
+        "Writing automation scripts (Python, Bash)",
+        "Using Chef and Ansible",
+        "Managing infrastructure as code with Terraform",
+        "Supporting TeamCity CI/CD",
+        "Performing recurring work in line with PCI DSS procedures"
+      ]
+    },
+    {
+      "company": "Virtual Fort LLC",
+      "position": "Systems Engineer",
+      "startDate": "2020-10",
+      "endDate": "2022-02",
+      "location": "Saint Petersburg",
+      "website": "https://virtualfort.ru/",
+      "sectionTitle": "Key achievements",
+      "highlights": [
+        {
+          "text": "Operating a heterogeneous infrastructure (Linux/Windows VMs, VMware hypervisors, networking) compliant with the PCI DSS standard",
+          "links": [
+            {
+              "url": "https://www.pcisecuritystandards.org/",
+              "label": "PCI DSS"
+            }
+          ]
+        },
+        "Working within an ITSM methodology",
+        "Receiving and registering customer tickets; preparing change bulletins for infrastructure updates",
+        "Operating an ELK-based logging stack and Zabbix/VictoriaMetrics monitoring",
+        "Provisioning baseline infrastructure: Nginx, Apache2, IIS, MySQL, PostgreSQL, MS SQL, PHP, Node.js",
+        "Automation stack: SaltStack",
+        "Proactive monitoring and infrastructure optimization",
+        "Performing periodic software updates and vulnerability remediation per PCI DSS"
+      ]
+    },
+    {
+      "company": "FastVPS Limited LLC",
+      "position": "Head of Technical Support",
+      "startDate": "2015-10",
+      "endDate": "2020-08",
+      "location": "Saint Petersburg",
+      "website": "https://fastvps.ru",
+      "sectionTitle": "Key achievements",
+      "highlights": [
+        "Providing technical support for company services",
+        "Writing departmental runbooks and procedures",
+        "Hiring and training team members",
+        {
+          "text": "Contributing to company projects (billing system, FASTPANEL) as a tester and requirements owner",
+          "links": [
+            {
+              "url": "https://fastpanel.direct/",
+              "label": "FASTPANEL"
+            }
+          ]
+        },
+        "External customer communications, handling complaints and escalations"
+      ]
+    },
+    {
+      "company": "FastVPS Limited LLC",
+      "position": "Technical Support Engineer",
+      "startDate": "2012-12",
+      "endDate": "2015-10",
+      "location": "Saint Petersburg",
+      "website": "https://fastvps.ru",
+      "sectionTitle": "Responsibilities",
+      "highlights": [
+        "Providing technical support to customers",
+        "Helping customers with dedicated physical servers and OpenVZ/KVM VPS",
+        "Supporting ISPManager and FASTPANEL control panels",
+        "Configuring Apache2, Nginx, MySQL, and PHP for customer websites",
+        "Diagnosing server issues and identifying root causes"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "Far Eastern Federal University",
+      "faculty": "FRET (Radioelectronics and Telecommunications)",
+      "area": "Information Systems and Technologies",
+      "studyType": "Engineer",
+      "location": "Vladivostok",
+      "endDate": "2011"
+    }
+  ],
+  "skills": [
+    {
+      "category": "Containers and orchestration",
+      "items": [
+        "Kubernetes (Deckhouse Platform)",
+        "Docker"
+      ]
+    },
+    {
+      "category": "Cloud platforms",
+      "items": [
+        "AWS (EC2, RDS, EKS)",
+        "Yandex Cloud"
+      ]
+    },
+    {
+      "category": "Automation and IaC",
+      "items": [
+        "Terraform",
+        "Ansible",
+        "Chef",
+        "SaltStack"
+      ]
+    },
+    {
+      "category": "Programming languages",
+      "items": [
+        "Python",
+        "Bash",
+        "PHP"
+      ]
+    },
+    {
+      "category": "Databases",
+      "items": [
+        "PostgreSQL",
+        "MySQL",
+        "MS SQL"
+      ]
+    },
+    {
+      "category": "Web servers",
+      "items": [
+        "Nginx",
+        "Apache2",
+        "IIS"
+      ]
+    },
+    {
+      "category": "Monitoring and logging",
+      "items": [
+        "Zabbix",
+        "VictoriaMetrics",
+        "ELK Stack"
+      ]
+    },
+    {
+      "category": "CI/CD",
+      "items": [
+        "TeamCity",
+        "Git"
+      ]
+    },
+    {
+      "category": "Networking",
+      "items": [
+        "TCP/IP",
+        "Linux administration"
+      ]
+    },
+    {
+      "category": "Methodologies and standards",
+      "items": [
+        "ITSM",
+        "PCI DSS",
+        "API development"
+      ]
+    }
+  ],
+  "qualities": [
+    "Fast learner",
+    "Teamwork",
+    "Negotiation",
+    "Analytical thinking",
+    "Proactivity"
+  ],
+  "languages": [
+    {
+      "language": "Russian",
+      "fluency": "native"
+    },
+    {
+      "language": "English",
+      "fluency": "B1 (intermediate)"
+    }
+  ],
+  "targetPosition": {
+    "title": "kISO/pISA/CISO/Whatever you want",
+    "workFormat": "remote",
+    "roles": [
+      "DevSecOps engineer",
+      "SRE engineer",
+      "Product analyst",
+      "System administrator"
+    ],
+    "salary": {
+      "amount": 10000,
+      "currency": "EUR",
+      "net": true
+    }
+  }
+}
