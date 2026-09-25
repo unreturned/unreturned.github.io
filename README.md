@@ -14,20 +14,10 @@ make stop
 
 Source of truth: `resume.json`. Rendered in the browser by `js/resume.js`.
 
-```bash
-make resume   # validate resume.json
-```
-
 ## Git hooks
 
 ```bash
 make install-git
-```
-
-## Open locally
-
-```bash
-make test
 ```
 
 ## Images / QR

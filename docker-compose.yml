@@ -1,7 +1,8 @@
 services:
   website:
     # https://hub.docker.com/_/nginx
-    image: docker.io/library/nginx:alpine
+    # crane digest docker.io/library/nginx:1.31.6-alpine
+    image: docker.io/library/nginx@sha256:d10753d9289b8e3f884386351f73554ce72b631378949deddd75e83ee296c427
     restart: always
     ports:
       - "3000:80"
